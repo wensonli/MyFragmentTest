@@ -16,7 +16,7 @@ public class OneFragmentActivity extends AppCompatActivity implements FragmentOn
 
     private final static String TAG = "Wen.Activity";
 
-    private @Nullable Fragment currFragment;
+    private @Nullable Fragment mCurrentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class OneFragmentActivity extends AppCompatActivity implements FragmentOn
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
 
-        currFragment = fragment;
+        mCurrentFragment = fragment;
         log("onAttachFragment");
     }
 
@@ -97,7 +97,7 @@ public class OneFragmentActivity extends AppCompatActivity implements FragmentOn
                 .beginTransaction()
                 .addToBackStack(FragmentTwo.TAG)
                 .add( R.id.content, fragmentTwo,  FragmentTwo.TAG)
-                .hide(currFragment)
+                .hide(mCurrentFragment)
                 .commit();
     }
 

@@ -1,5 +1,6 @@
 package com.example.wenson.myfragmenttest;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ public class FragmentOne extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    protected Context mAppContext;
 
     public FragmentOne() {
         // Required empty public constructor
@@ -124,8 +127,10 @@ public class FragmentOne extends Fragment {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null){
             mState = savedInstanceState.getBoolean(KEY_STATE);
-
         }
+
+        final Activity activity = getActivity();
+        mAppContext = activity.getApplicationContext();
 
         asyncall();
 
@@ -247,7 +252,7 @@ public class FragmentOne extends Fragment {
         }
 
 
-        Toast.makeText(getActivity(), "hello one, state is " + mState, Toast.LENGTH_LONG).show();
+        Toast.makeText(mAppContext, "hello one, state is " + mState, Toast.LENGTH_LONG).show();
     }
 
 
